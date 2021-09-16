@@ -13,7 +13,7 @@ text-align: center;
 }
 
 .weather-app {
-  background-image:url("day.png");
+  background-image:url("img/day.png");
   border: 1px solid #dadde1;
   padding: 15px;
   margin: 20px auto;
