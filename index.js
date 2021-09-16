@@ -1,3 +1,10 @@
+function showTemperature(response){
+  let tempData = response.data.main.temp;
+  let currentTemp = document.querySelector("#temperature");
+  currentTemp.innerHTML = tempData;
+}
+
+
 function search (event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-Input");
@@ -7,8 +14,6 @@ function search (event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=7796ed76d4738ed90e39d5875eb78f75&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
-}
-
 
 let currentCity = document.querySelector(".search-form");
 currentCity.addEventListener ("submit",search);
