@@ -17,12 +17,19 @@ function search (event) {
 let currentCity = document.querySelector(".search-form");
 currentCity.addEventListener ("submit",search);
 
+function showYourTemperatureAndCity(response){
+  let tempData = Math.round(response.data.main.temp);
+  let currentTemp = document.querySelector("#temperature");
+  currentTemp.innerHTML = `${tempData}°C`;
+  let h1 = document.querySelector("h1");
+  h1.innerHTML = response.data.name;
+}
 
 function showPosition(position){
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `https://https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7796ed76d4738ed90e39d5875eb78f75&units=metric`;
-  axios.get(apiUrl).then(showTemperature);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7796ed76d4738ed90e39d5875eb78f75&units=metric`;
+  axios.get(apiUrl).then(showYourTemperatureAndCity);
 }
 
 function getCurrentPosition(){
