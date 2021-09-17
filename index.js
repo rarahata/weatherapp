@@ -1,3 +1,4 @@
+//search by city names
 function showTemperature(response){
   let tempData = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#temperature");
@@ -17,12 +18,22 @@ function search (event) {
 let currentCity = document.querySelector(".search-form");
 currentCity.addEventListener ("submit",search);
 
+
+//get geolocation
 function showYourTemperatureAndCity(response){
   let tempData = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#temperature");
   currentTemp.innerHTML = `${tempData}°C`;
   let h1 = document.querySelector("h1");
   h1.innerHTML = response.data.name;
+  let now = new Date();
+let date = now.getDate();
+let hours = now.getHours();
+let minutes = now.getMinutes();
+let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+let day = days[now.getDay()];
+let currentDateandTime = document.querySelector("#date");
+currentDateandTime.innerHTML = `${day}, ${hours}:${minutes}`;
 }
 
 function showPosition(position){
@@ -38,3 +49,4 @@ function getCurrentPosition(){
 
 let currentPosition = document.querySelector("#current-position-button");
 currentPosition.addEventListener("click", getCurrentPosition);
+
